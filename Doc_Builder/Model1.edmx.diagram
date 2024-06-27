@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c2292b61d2a6433b8395b450e5a56970" Name="Diagram1">
+        <EntityTypeShape EntityType="User10_Sgr1Model.MIL_Employees" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="User10_Sgr1Model.Mil_ReadyDocuments" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="User10_Sgr1Model.Mil_Templates" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="User10_Sgr1Model.Mil_Type" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="User10_Sgr1Model.Mil_UsersDoc" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="User10_Sgr1Model.FK_Mil_ReadyDocuments_MIL_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="User10_Sgr1Model.FK_Mil_ReadyDocuments_Mil_Templates" ManuallyRouted="false" />
+        <AssociationConnector Association="User10_Sgr1Model.FK_Mil_Templates_Mil_Type" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

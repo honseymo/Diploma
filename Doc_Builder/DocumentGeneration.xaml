@@ -1,0 +1,452 @@
+﻿<Window x:Class="Doc_Builder.DocumentGeneration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Doc_Builder"
+        mc:Ignorable="d"
+        Title="Формирование документа" Height="494" Width="800" WindowStyle="ThreeDBorderWindow" Topmost="True" WindowStartupLocation="CenterScreen" Background="#2a2a2e" Closed="Window_Closed" Icon="document_icon-icons.com_69396.ico">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+      
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="12*">
+                </RowDefinition>
+                <RowDefinition >
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <DataGrid Name="Employers" AutoGenerateColumns="False" Background="#2a2a2e">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=FullName}" Header="ФИО"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path=DateOfBirth}" Header="Дата рождения"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path=Tel}" Header="Телефон"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Path=Profession}" Header="Специальность"></DataGridTextColumn>
+                    
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="btnLogin"     
+                            Grid.Row="2"
+                            BorderThickness="0"
+                            Content="Заполнить данными"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"                           
+                            Click="Button_Click_1">
+
+            </Button>
+        </Grid>
+        <Grid Name="VOZVRAT_NDFL" Visibility="Collapsed" Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="97*"/>
+                <ColumnDefinition Width="99*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Начальнику Инспекции ФНС России  № " Grid.ColumnSpan="2"  FontSize="13"
+                       />
+            <Label Grid.Column="0" Grid.Row="1" Content="Дата от" Grid.ColumnSpan="3" FontWeight="Medium"
+                             />
+            <Label Grid.Column="0" Grid.Row="2" Content="проживающего(ей) по адресу" Grid.ColumnSpan="2" FontWeight="Medium"
+                             />
+            <Label Grid.Column="0" Grid.Row="3" Content="ИНН" Grid.ColumnSpan="2" FontWeight="Medium"
+                            />
+            <Label Grid.Column="0" Grid.Row="4" Content="За какой год" Grid.ColumnSpan="2" FontWeight="Medium"
+                             />
+            <Label Grid.Column="0" Grid.Row="5" Content="В связи с чем" Grid.ColumnSpan="2" FontWeight="Medium"
+                             />
+
+            <Label Grid.Column="0" Grid.Row="6" Content="Сумма возврата" Grid.ColumnSpan="2" FontWeight="Medium"
+                              />
+            <Label Grid.Column="0" Grid.Row="7" Content="Возврат произвести на счет № " Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="8" Content="Открытый в банке" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="9" Content="Адрес банка" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="10" Content="Реквизиты" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="11" Content="Дата составления" Grid.ColumnSpan="2"  />
+       
+
+
+            <TextBox Grid.Column="2" Grid.Row="0" Name="NUMBER_INSPECT_VOZVRAT" Text="№4564674"></TextBox>
+            <DatePicker Grid.Column="2" Grid.Row="1" Name="DATE_FORM_VOZVRAT" ></DatePicker>
+            <TextBox Grid.Column="2" Grid.Row="2" Name="ADDRES_INSPECT_VOZVRAT" Text="Ул. Партизанская, 49"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="3" Name="INN_VOZVRAT" Text="6567373543"></TextBox>
+            <DatePicker Grid.Column="2" Grid.Row="4" Name="YEAR_VOZVRAT" Text="2012"></DatePicker>
+            <TextBox Grid.Column="2" Grid.Row="5" Name="REASON_VOZVRAT" Text="Покупка квартиры"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="6" Name="SUM_VOZVRAT" Text="9000000"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="7" Name="NUMBER_VOZVRAT" Text="9825827592"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="8" Name="NAME_BANK_VOZVRAT" Text="СберБанк"/>
+            <TextBox Grid.Column="2" Grid.Row="9" Name="ADDRES_BANK_VOZVRAT" Text="Пр. Красноармейский, 45"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="10" Name="REQUSITES_VOZVRAT" Text="8456496457"></TextBox>
+            <DatePicker Grid.Column="2" Grid.Row="11" Name="DATE_VOZVRAT"/>
+
+            <Button Grid.ColumnSpan="3" Grid.Row="16" Click="New_VOZVRAT">Сделать отчёт</Button>
+
+
+
+        </Grid>
+        <Grid Name="VICHET" Visibility="Collapsed" Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+
+
+
+
+
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="97*"/>
+                <ColumnDefinition Width="99*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Наименование организации" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="1" Content="Глава организации" Grid.ColumnSpan="3"  />
+            <Label Grid.Column="0" Grid.Row="2" Content="ФИО" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="3" Content="Номер и серия паспорта" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="4" Content="Дата выдачи паспорта" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="5" Content="Дата рождения сотрудника:" Grid.ColumnSpan="2"  />
+
+            <Label Grid.Column="0" Grid.Row="6" Content="Адрес выдачи" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="7" Content="Должность" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="8" Content="Сумма вычета" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="9" Content="На какого ребенка возврат" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="10" Content="ФИО ребёнка" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="11" Content="Год рождения ребёнка" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="12" Content="Место обучения" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="13" Content="Дата составления" Grid.ColumnSpan="2"  />
+
+
+            <TextBox Grid.Column="2" Grid.Row="0" Name="ORG_VICHET" Text="ООО Сохрани зерно"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="1" Name="PROF_HEAD_VICHET" Text="Игорева А.А."></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="2" Name="FIO_VICHET" Text="Миллер"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="3" Name="PASSPORT_NUMBER_VICHET" Text="6567373543"></TextBox>
+            <DatePicker Grid.Column="2" Grid.Row="4" Name="PASSPORT_DATE_VICHET" Text="05.05.2012"></DatePicker>
+            <DatePicker Grid.Column="2" Grid.Row="5" Name="DATE_BIRTH_VICHET" Text="03.08.2004"></DatePicker>
+            <TextBox Grid.Column="2" Grid.Row="6" Name="ADDRES_VICHET" Text="Красноармейски, 57"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="7" Name="ROLE_VICHET" Text="Программист"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="8" Name="SUM_VICHET" Text="20000"/>
+            <TextBox Grid.Column="2" Grid.Row="9" Name="NUMBER_VICHET" Text="1"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="10" Name="FIO_CHILDREN_VICHET" Text="Миллер А.А."></TextBox>
+            <DatePicker Grid.Column="2" Grid.Row="11" Name="YEAR_VICHET"/>
+            <TextBox Grid.Column="2" Grid.Row="12" Name="EDUCATE_PLACE_VICHET" Text="АПЭК"/>
+            <DatePicker Grid.Column="2" Grid.Row="13" Name="DATE_VICHET"/>
+
+            <Button Grid.ColumnSpan="3" Grid.Row="16" Click="New_Vichet">Сделать отчёт</Button>
+
+
+
+        </Grid>
+        <Grid Name="PLAT_VEDOMOST" Visibility="Collapsed" Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+
+
+
+
+
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="97*"/>
+                <ColumnDefinition Width="99*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Наименование организации" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="1" Content="Структурное подразделение" Grid.ColumnSpan="3"  />
+            <Label Grid.Column="0" Grid.Row="2" Content="Корреспондирующий счет" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="3" Content="В кассу для оплаты в срок с" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="4" Content="По какое число" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="5" Content="Сумма:" Grid.ColumnSpan="2"  />
+
+            <Label Grid.Column="0" Grid.Row="6" Content="Руководитель организации" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="7" Content="Дата" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="8" Content="Номер документа" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="9" Content="Рассчетный период с" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="10" Content="По какое число" Grid.ColumnSpan="2"  />
+
+
+            <TextBox Grid.Column="2" Grid.Row="0" Name="ORG_PLAT_VEDOMOST" Text="ООО Сохрани зерно"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="1" Name="TYPE_PLAT_VEDOMOST" Text="Бухгалтерия"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="2" Name="KOR_NUMBER_PLAT_VEDOMOST" Text="№456456"></TextBox>
+            <DatePicker Grid.Column="2" Grid.Row="3" Name="DATE_FROM_PLAT_VEDOMOST" Text="с"></DatePicker>
+            <DatePicker Grid.Column="2" Grid.Row="4" Name="DATE_FOR_PLAT_VEDOMOST" Text="по"></DatePicker>
+            <TextBox Grid.Column="2" Grid.Row="5" Name="SUM_PLAT_VEDOMOST" Text="600000"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="6" Name="PROF_HEAD_PLAT_VEDOMOST" Text="Ивлева А.А."></TextBox>
+            <DatePicker Grid.Column="2" Grid.Row="7" Name="DATE_PLAT_VEDOMOST" Text="Дата"></DatePicker>
+            <TextBox Grid.Column="2" Grid.Row="8" Name="NUMBER_PLAT_VEDOMOST" Text="№65467578"/>
+            <DatePicker Grid.Column="2" Grid.Row="9" Name="DATE_FROM_RAS_PLAT_VEDOMOST" Text="с какого числа"></DatePicker>
+            <DatePicker Grid.Column="2" Grid.Row="10" Name="DATE_FOR_RAS_PLAT_VEDOMOST" Text="по"></DatePicker>
+            <Button Grid.ColumnSpan="3" Grid.Row="15" Click="New_Plat_Vedomost">Сделать отчёт</Button>
+
+
+
+        </Grid>
+        <Grid Name="AKTBLANK" Visibility="Collapsed" Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+              
+
+
+
+
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="97*"/>
+                <ColumnDefinition Width="99*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="АКТ №" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="1" Content="Дата составления" Grid.ColumnSpan="3"  />
+            <Label Grid.Column="0" Grid.Row="2" Content="Исполнитель" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="3" Content="Заказчик" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="4" Content="Основание" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="5" Content="Название работ услуг" Grid.ColumnSpan="2"  />
+           
+            <Label Grid.Column="0" Grid.Row="6" Content="Количество" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="7" Content="Единиц" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="8" Content="Цена" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="9" Content="Сумма работ" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="10" Content="НДС" Grid.ColumnSpan="2"  />
+            
+
+            <TextBox Grid.Column="2" Grid.Row="0" Name="NUMBER_ACT" Text="№3653645"></TextBox>
+            <DatePicker Grid.Column="2" Grid.Row="1" Name="DATE_ACT"></DatePicker>
+            <TextBox Grid.Column="2" Grid.Row="2" Name="EXECUTOR_ACT" Text="ООО Сохрани зерно "></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="3" Name="CUSTOMER_ACT" Text="ООО Компания конкурент"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="4" Name="BASE_ACT" Text="По веским причинам"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="5" Name="TITLEWORKS_ACT" Text="Покраска стен"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="6" Name="QUANTITY_ACT" Text="1"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="7" Name="UNITS_ACT" Text="шт"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="8" Name="COST_ACT" Text="650000"/>
+            <TextBox Grid.Column="2" Grid.Row="9" Name="SUM_ACT" Text="750000"></TextBox>
+            <TextBox Grid.Column="2" Grid.Row="10" Name="NDS_ACT" Text="100000"></TextBox>
+            <Button Grid.ColumnSpan="3" Grid.Row="15" Click="New_Act">Сделать отчёт</Button>
+
+
+
+        </Grid>
+        <Grid Name="DissmisalBlank" Visibility="Collapsed" Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+               
+              
+
+
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="97*"/>
+                <ColumnDefinition Width="99*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Организация" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="1" Content="Номер документа" Grid.ColumnSpan="3"  />
+            <Label Grid.Column="0" Grid.Row="2" Content="Дата документа" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="3" Content="Прекратить действие трудового договора от " Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="4" Content="Уволить по" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="5" Content="Номер трудового договора" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="6" Content="Табельный номер" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="7" Content="ФИО" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="8" Content="Отдел" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="9" Content="Профессия" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="10" Content="Причина" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="11" Content="На основании" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="12" Content="Глава отдела" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="14" Content="Руководитель организации" Grid.ColumnSpan="2"  />
+            <TextBox Grid.Column="2" Grid.Row="0" Text="Моя организация" Name="ORG_Dis"/>
+            <TextBox Grid.Column="2" Grid.Row="1" Text="№5495739" Name="NUMBER_DIS"/>
+
+
+            <TextBox Grid.Column="2" Grid.Row="5" Text="№4354563" Name="NUMBER_DOC" />
+            <Button Grid.ColumnSpan="3" Grid.Row="15" Click="New_Dissmis">Сделать отчёт</Button>
+            <DatePicker Grid.Column="2" HorizontalAlignment="Left" Grid.Row="2" SelectedDateFormat="Long" Name="DATE_DIS"/>
+            <DatePicker Grid.Column="2" HorizontalAlignment="Left" Grid.Row="3" SelectedDateFormat="Long" Name="DATE_DOC_DIS"/>
+            <DatePicker Grid.Column="2" HorizontalAlignment="Left" Grid.Row="4" SelectedDateFormat="Long" Name="DATE_UVOL_DIS"/>
+            <TextBox Grid.Column="2" Grid.Row="6" Text="№53453" Name="NUNMERIC_TABEL_DIS"/>
+            <TextBox Grid.Column="2" Grid.Row="7" Text="Миллер Владислав Алексеевич" Name="FIO_DIS"/>
+            <TextBox Grid.Column="2" Grid.Row="8" Text="Бухгалтерия" Name="TYPE_DIS"/>
+            <TextBox Grid.Column="2" Grid.Row="9" Text="Программист" Name="PROF_DIS"/>
+            <TextBox Grid.Column="2" Grid.Row="10" Text="По собственному желанию" Name="BASE_DIS"/>
+            <TextBox Grid.Column="2" Grid.Row="11" Text="Заявление об увольнении №34345" Name="DOCUMENT_FOUNDATION_DIS"/>
+            <TextBox Grid.Column="2" Grid.Row="12" Text="Юрьева А. А." Name="PROF_HEAD_DIS"/>
+            
+        </Grid>
+        <Grid Name="BlankPriema" Visibility="Collapsed" Grid.Column="0">
+   
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+             
+            
+              
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="97*"/>
+                <ColumnDefinition Width="99*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Организация" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="1" Content="Номер документа" Grid.ColumnSpan="3"  />
+            <Label Grid.Column="0" Grid.Row="2" Content="Дата составления" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="3" Content="Дата c " Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="4" Content="Дата по" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="5" Content="ФИО" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="6" Content="Табельный номер" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="7" Content="Тип подразделения" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="8" Content="Профессия" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="9" Content="Характер работ" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="10" Content="Зарплата" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="11" Content="Надбавка" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="12" Content="Испытательный срок(месяцев)" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="13" Content="Номер договора" Grid.ColumnSpan="2"  />
+            <Label Grid.Column="0" Grid.Row="14" Content="Руководитель организации" Grid.ColumnSpan="2"  />
+            <TextBox Grid.Column="2" Grid.Row="0" Text="Моя организация" Name="ORG_Emp"/>
+            <TextBox Grid.Column="2" Grid.Row="1" Text="№5495739" Name="Number_Emp"/>
+
+
+            <TextBox Grid.Column="2" Grid.Row="5" Text="Миллер Владислав Алексеевич" Name="FIO_Emp" />
+            <Button Grid.ColumnSpan="3" Grid.Row="15" Click="New_employer">Сделать отчёт</Button>
+            <DatePicker Grid.Column="2" HorizontalAlignment="Left" Grid.Row="2" SelectedDateFormat="Long" Name="Date_Emp"/>
+            <DatePicker Grid.Column="2" HorizontalAlignment="Left" Grid.Row="3" SelectedDateFormat="Long" Name="DATEFROM_Emp"/>
+            <DatePicker Grid.Column="2" HorizontalAlignment="Left" Grid.Row="4" SelectedDateFormat="Long" Name="DATEFOR_Emp"/>
+            <TextBox Grid.Column="2" Grid.Row="6" Text="№53453" Name="NUNMERIC_TABEL_Emp"/>
+            <TextBox Grid.Column="2" Grid.Row="7" Text="Бухгалтерия" Name="TYPE_Emp"/>
+            <TextBox Grid.Column="2" Grid.Row="8" Text="Программист" Name="PROF_Emp"/>
+            <TextBox Grid.Column="2" Grid.Row="9" Text="Характерные работы" Name="NAME_OF_PROF_Emp"/>
+            <TextBox Grid.Column="2" Grid.Row="10" Text="50000" Name="SALARY_Emp"/>
+            <TextBox Grid.Column="2" Grid.Row="11" Text="10000" Name="ALLOWANCE_Emp"/>
+            <TextBox Grid.Column="2" Grid.Row="12" Text="3" Name="PROBATION_Emp"/>
+            <TextBox Grid.Column="2" Grid.Row="13" Text="№56456546" Name="NUM_TREATY_Emp"/>
+            <TextBox Grid.Column="2" Grid.Row="14" Text="Юрьева. А.А." Name="PROF_HEAD_Emp"/>
+          
+        </Grid>
+        <Grid Name="WorkDocument" Visibility="Collapsed" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Организация"  />
+            <Label Grid.Column="0" Grid.Row="1" Content="FIO" Grid.ColumnSpan="3"  />
+            <Label Grid.Column="0" Grid.Row="2" Content="Профессия"  />
+            <Label Grid.Column="0" Grid.Row="3" Content="Дата от"  />
+            <Label Grid.Column="0" Grid.Row="4" Content="Месяц"  />
+            <Label Grid.Column="0" Grid.Row="5" Content="Зарплата"  />
+            <Label Grid.Column="0" Grid.Row="6" Content="Дата"  />
+            <TextBox Grid.Column="1" Grid.Row="0" Text="Моя организация" Name="ORG"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Text="Влад Миллер Алексеевич" Name="FIO"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Text="Программист" Name="PROF"/>
+            <TextBox Grid.Column="1" Grid.Row="4" Text="3" Name="MONTHS"/>
+            <TextBox Grid.Column="1" Grid.Row="5" Text="10000" Name="SALARY"/>
+            <Button Grid.ColumnSpan="2" Grid.Row="7" Click="Button_Click">Сделать отчёт</Button>
+            <DatePicker Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" Name="DATEFROM" SelectedDateFormat="Long"/>
+            <DatePicker Grid.Column="1" HorizontalAlignment="Left" Grid.Row="6" Name="DATE"/>
+        </Grid>
+    </Grid>
+</Window>

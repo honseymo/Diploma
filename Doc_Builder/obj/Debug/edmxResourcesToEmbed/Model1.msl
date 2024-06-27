@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище User10_Sgr1ModelContainer" CdmEntityContainer="User10_Sgr1Entities">
+    <EntitySetMapping Name="MIL_Employees">
+      <EntityTypeMapping TypeName="User10_Sgr1Model.MIL_Employees">
+        <MappingFragment StoreEntitySet="MIL_Employees">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mil_ReadyDocuments">
+      <EntityTypeMapping TypeName="User10_Sgr1Model.Mil_ReadyDocuments">
+        <MappingFragment StoreEntitySet="Mil_ReadyDocuments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EmployerID" ColumnName="EmployerID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mil_Templates">
+      <EntityTypeMapping TypeName="User10_Sgr1Model.Mil_Templates">
+        <MappingFragment StoreEntitySet="Mil_Templates">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Header" ColumnName="Header" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="FieldData" ColumnName="FieldData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mil_Type">
+      <EntityTypeMapping TypeName="User10_Sgr1Model.Mil_Type">
+        <MappingFragment StoreEntitySet="Mil_Type">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HeadOfDepartment" ColumnName="HeadOfDepartment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mil_UsersDoc">
+      <EntityTypeMapping TypeName="User10_Sgr1Model.Mil_UsersDoc">
+        <MappingFragment StoreEntitySet="Mil_UsersDoc">
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

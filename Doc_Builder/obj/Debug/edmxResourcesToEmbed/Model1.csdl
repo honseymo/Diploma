@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="User10_Sgr1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MIL_Employees">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="Tel" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Profession" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Mil_ReadyDocuments" Relationship="Self.FK_Mil_ReadyDocuments_MIL_Employees" FromRole="MIL_Employees" ToRole="Mil_ReadyDocuments" />
+  </EntityType>
+  <EntityType Name="Mil_ReadyDocuments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployerID" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="DocumentID" Type="Int32" />
+    <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MIL_Employees" Relationship="Self.FK_Mil_ReadyDocuments_MIL_Employees" FromRole="Mil_ReadyDocuments" ToRole="MIL_Employees" />
+    <NavigationProperty Name="Mil_Templates" Relationship="Self.FK_Mil_ReadyDocuments_Mil_Templates" FromRole="Mil_ReadyDocuments" ToRole="Mil_Templates" />
+  </EntityType>
+  <EntityType Name="Mil_Templates">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Header" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FieldData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Mil_ReadyDocuments" Relationship="Self.FK_Mil_ReadyDocuments_Mil_Templates" FromRole="Mil_Templates" ToRole="Mil_ReadyDocuments" />
+    <NavigationProperty Name="Mil_Type" Relationship="Self.FK_Mil_Templates_Mil_Type" FromRole="Mil_Templates" ToRole="Mil_Type" />
+  </EntityType>
+  <EntityType Name="Mil_Type">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HeadOfDepartment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Mil_Templates" Relationship="Self.FK_Mil_Templates_Mil_Type" FromRole="Mil_Type" ToRole="Mil_Templates" />
+  </EntityType>
+  <EntityType Name="Mil_UsersDoc">
+    <Key>
+      <PropertyRef Name="login" />
+    </Key>
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Mil_ReadyDocuments_MIL_Employees">
+    <End Role="MIL_Employees" Type="Self.MIL_Employees" Multiplicity="0..1" />
+    <End Role="Mil_ReadyDocuments" Type="Self.Mil_ReadyDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MIL_Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Mil_ReadyDocuments">
+        <PropertyRef Name="EmployerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mil_ReadyDocuments_Mil_Templates">
+    <End Role="Mil_Templates" Type="Self.Mil_Templates" Multiplicity="0..1" />
+    <End Role="Mil_ReadyDocuments" Type="Self.Mil_ReadyDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mil_Templates">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Mil_ReadyDocuments">
+        <PropertyRef Name="DocumentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mil_Templates_Mil_Type">
+    <End Role="Mil_Type" Type="Self.Mil_Type" Multiplicity="0..1" />
+    <End Role="Mil_Templates" Type="Self.Mil_Templates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mil_Type">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Mil_Templates">
+        <PropertyRef Name="TypeName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="User10_Sgr1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MIL_Employees" EntityType="Self.MIL_Employees" />
+    <EntitySet Name="Mil_ReadyDocuments" EntityType="Self.Mil_ReadyDocuments" />
+    <EntitySet Name="Mil_Templates" EntityType="Self.Mil_Templates" />
+    <EntitySet Name="Mil_Type" EntityType="Self.Mil_Type" />
+    <EntitySet Name="Mil_UsersDoc" EntityType="Self.Mil_UsersDoc" />
+    <AssociationSet Name="FK_Mil_ReadyDocuments_MIL_Employees" Association="Self.FK_Mil_ReadyDocuments_MIL_Employees">
+      <End Role="MIL_Employees" EntitySet="MIL_Employees" />
+      <End Role="Mil_ReadyDocuments" EntitySet="Mil_ReadyDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mil_ReadyDocuments_Mil_Templates" Association="Self.FK_Mil_ReadyDocuments_Mil_Templates">
+      <End Role="Mil_Templates" EntitySet="Mil_Templates" />
+      <End Role="Mil_ReadyDocuments" EntitySet="Mil_ReadyDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mil_Templates_Mil_Type" Association="Self.FK_Mil_Templates_Mil_Type">
+      <End Role="Mil_Type" EntitySet="Mil_Type" />
+      <End Role="Mil_Templates" EntitySet="Mil_Templates" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

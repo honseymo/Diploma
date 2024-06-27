@@ -1,0 +1,113 @@
+﻿<Window x:Class="Doc_Builder.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:Doc_Builder.ViewModel"
+        xmlns:local="clr-namespace:Doc_Builder" xmlns:local1="clr-namespace:Doc_Builder.ClassesForGenerate"
+        mc:Ignorable="d"
+        Title="DocBuilder" Height="600" Width="920" WindowStyle="None" ResizeMode="CanResizeWithGrip" Background="Transparent" AllowsTransparency="True" Topmost="True" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown">
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+
+    <Border Background="#2a2a2e" CornerRadius="20">
+        <Grid>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions >
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Border
+                Background="#1c1b21"
+                CornerRadius="20,20,0,0"
+                Grid.ColumnSpan="2"
+                Height="auto"
+                Padding="13"
+                MouseDown="Border_MouseDown"
+                VerticalAlignment="Top">
+                <Grid>
+
+                    <StackPanel 
+                        HorizontalAlignment="Right"
+                        Margin="10, 0"
+                        Orientation="Horizontal">
+                        <Button x:Name="btnMinimize"
+                                Content="{StaticResource minimize}"
+                                Style="{StaticResource IconButtonStyle}" 
+                                Click="btnMinimize_MouseDown"
+                                />
+                        <Button x:Name="btnMaximaze"
+                                Content="{StaticResource maximize}"
+                                Style="{StaticResource IconButtonStyle}" 
+                                Click="btnMaximaze_MouseDown"
+                                />
+                        <Button x:Name="btnClose"
+                                Content="{StaticResource close}"
+                                Style="{StaticResource IconButtonStyle}" 
+                                Click="btnClose_MouseDown"
+                                
+                                />
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Image HorizontalAlignment="Right" Source="/Images/Logo.png" Height="40" VerticalAlignment="Bottom"/>
+            <TextBlock Text="DocBuilder" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="White" FontSize="23" Margin="20,0,0,0"
+                       FontFamily="/Fonts/#Popins">
+            </TextBlock>
+
+
+
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Главная"
+             Height="50"
+             Foreground="White"
+             FontSize="14"
+             Style="{StaticResource MenuButtonTheme}"
+             IsChecked="True"
+             Command="{Binding HomeViewCommand}"
+             />
+
+                <RadioButton Content="Шаблоны"
+             Height="50"
+             Foreground="White"
+             FontSize="14"
+             Style="{StaticResource MenuButtonTheme}"
+             Command="{Binding DiscoveryViewCommand}"
+             />
+
+                <RadioButton Content="Формирование"
+             Height="50"
+             Foreground="White"
+             FontSize="14"
+             Style="{StaticResource MenuButtonTheme}"
+             Command="{Binding WordViewCommand}"
+             />
+
+                <RadioButton Content="Готовые документы"
+             Height="50"
+             Foreground="White"
+             FontSize="14"
+             Style="{StaticResource MenuButtonTheme}"
+             Command="{Binding ReadyDocumnetsViewCommand}"
+             />
+            </StackPanel>
+
+            <ContentControl Grid.Row="1" Grid.Column="1"
+                            Margin="10 "
+                            Content="{Binding CurrentView}">
+
+            </ContentControl>
+
+
+
+
+        </Grid>
+
+    </Border>
+</Window>

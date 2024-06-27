@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="Doc_Builder.View.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Doc_Builder.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com">
+    <Grid Width="594" HorizontalAlignment="Left">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="98*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="2"  HorizontalAlignment="Left"  VerticalAlignment="Top">
+            <Image Source="/Images/248884004-af212da4-8588-4d7c-8400-16e56f2746a0.gif" Margin="12,-44,-103,-16" />
+            <Image Source="/Images/github-mark.png" Margin="297,310,176,-50" MouseDown="Image_MouseDown_1" />
+            <Image Source="/Images/image-Photoroom.png" Margin="463,-90,-129,229" MouseDown="Image_MouseDown" />
+            <Image Source="/Images/microsoft-sql-server-logo-svgrepo-com.png" Margin="434,199,-100,-61" />
+            <Image Source="/Images/pngegg.png" Margin="26,355,449,-15" MouseDown="Image_MouseDown_2" />
+           
+        </Grid>
+
+        <TextBlock
+            Foreground="Gray"
+            FontWeight="Bold"
+            FontSize="28"
+            HorizontalAlignment="Left"
+            Margin="20,36,0,340" Width="606" Grid.Column="1"
+                   ><Run Text="Программа для формирования"/><LineBreak/><Run Text=" документов"/></TextBlock>
+
+    </Grid>
+</UserControl>
